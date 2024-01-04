@@ -1,5 +1,5 @@
 resource "aws_kms_key" "ekskey" {
-  description = format("EKS KMS Key 2 %s", var.cluster-name)
+  description = format("%s EKS KMS Key 2 %s", var.environment, var.cluster-name)
 }
 
 output "keyid" {

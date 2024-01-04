@@ -1,16 +1,16 @@
 resource "aws_ssm_parameter" "tf-eks-id" {
-  name        = "/workshop/tf-eks/id"
+  name        = "/${var.environment}/tf-eks/id"
   description = "The unique id for the workshop"
   type        = "String"
   value       = random_id.id1.hex
 
   tags = {
-    workshop = "tf-eks-workshop"
+    workshop = "tf-eks/${var.environment}"
   }
 }
 
 resource "aws_ssm_parameter" "tf-eks-keyid" {
-  name        = "/workshop/tf-eks/keyid"
+  name        = "/${var.environment}/tf-eks/keyid"
   description = "The keyid for the workshop"
   type        = "String"
   value       = aws_kms_key.ekskey.key_id
@@ -21,7 +21,7 @@ resource "aws_ssm_parameter" "tf-eks-keyid" {
 }
 
 resource "aws_ssm_parameter" "tf-eks-keyarn" {
-  name        = "/workshop/tf-eks/keyarn"
+  name        = "/${var.environment}/tf-eks/keyarn"
   description = "The keyid for the workshop"
   type        = "String"
   value       = aws_kms_key.ekskey.arn
@@ -32,7 +32,7 @@ resource "aws_ssm_parameter" "tf-eks-keyarn" {
 }
 
 resource "aws_ssm_parameter" "tf-eks-region" {
-  name        = "/workshop/tf-eks/region"
+  name        = "/${var.environment}/tf-eks/region"
   description = "The region for the workshop"
   type        = "String"
   value       = var.region
@@ -43,7 +43,7 @@ resource "aws_ssm_parameter" "tf-eks-region" {
 }
 
 resource "aws_ssm_parameter" "tf-eks-cluster-name" {
-  name        = "/workshop/tf-eks/cluster-name"
+  name        = "/${var.environment}/tf-eks/cluster-name"
   description = "The EKS cluster name for the workshop"
   type        = "String"
   value       = var.cluster-name
@@ -54,7 +54,7 @@ resource "aws_ssm_parameter" "tf-eks-cluster-name" {
 }
 
 resource "aws_ssm_parameter" "tf-eks-buck-name" {
-  name        = "/workshop/tf-eks/bucket-name"
+  name        = "/${var.environment}/tf-eks/bucket-name"
   description = "The Terraform State bucket name for the workshop"
   type        = "String"
   value       = aws_s3_bucket.terraform_state.bucket
@@ -65,7 +65,7 @@ resource "aws_ssm_parameter" "tf-eks-buck-name" {
 }
 
 resource "aws_ssm_parameter" "tf-eks-version" {
-  name        = "/workshop/tf-eks/eks-version"
+  name        = "/${var.environment}/tf-eks/eks-version"
   description = "The EKS Version"
   type        = "String"
   value       = var.eks_version
@@ -75,3 +75,13 @@ resource "aws_ssm_parameter" "tf-eks-version" {
   }
 }
 
+resource "aws_ssm_parameter" "environment" {
+  name        = "/environment"
+  description = "The EKS Version"
+  type        = "String"
+  value       = var.environment
+
+  tags = {
+    workshop = "tf-eks-workshop"
+  }
+}

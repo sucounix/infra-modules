@@ -11,6 +11,12 @@ variable "profile" {
   default     = "default"
 }
 
+variable "environment" {
+  type        = string
+  description = "(optional) describe your variable"
+  default     = "test"
+}
+
 variable "cluster-name" {
   description = "The name of the EKS Cluster"
   type        = string
