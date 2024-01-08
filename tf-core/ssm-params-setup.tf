@@ -76,7 +76,7 @@ resource "aws_ssm_parameter" "tf-eks-version" {
 }
 
 resource "aws_ssm_parameter" "environment" {
-  name        = "/environment"
+  name        = "/${var.environment}/environment"
   description = "The EKS Version"
   type        = "String"
   value       = var.environment
