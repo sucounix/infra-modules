@@ -1,7 +1,7 @@
 
 resource "aws_s3_bucket" "terraform_state" {
 
-  bucket = format("tf-state-workshop-%s", random_id.id1.hex)
+  bucket = format("%s-tf-state-workshop-%s", var.environment, random_id.id1.hex)
 
   // This is only here so we can destroy the bucket as part of automated tests. You should not copy this for production
   // usage
@@ -48,3 +48,40 @@ resource "aws_s3_bucket_public_access_block" "pub_block_state" {
   ignore_public_acls      = true
 }
 
+
+resource "aws_s3_bucket_policy" "terraform_state_s3_policy" {
+  bucket = aws_s3_bucket.terraform_state.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid       = "EnforcedTLS",
+        Effect    = "Deny",
+        Principal = "*",
+        Action    = "s3:*",
+        Resource  = [
+          "${aws_s3_bucket.terraform_state.arn}",
+          "${aws_s3_bucket.terraform_state.arn}/*"
+        ],
+        Condition = {
+          Bool = {
+            "aws:SecureTransport" = "false"
+          }
+        }
+      },
+      {
+        Sid       = "RootAccess",
+        Effect    = "Allow",
+        Principal = {
+          AWS = "arn:aws:iam::344845126663:root"
+        },
+        Action    = "s3:*",
+        Resource  = [
+          "${aws_s3_bucket.terraform_state.arn}",
+          "${aws_s3_bucket.terraform_state.arn}/*"
+        ]
+      }
+    ]
+  })
+}
