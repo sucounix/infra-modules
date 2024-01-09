@@ -425,3 +425,4 @@ resource "aws_vpc_endpoint" "vpce-grafana" {
 
   timeouts {}
 }
+
