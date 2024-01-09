@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc-cicd" {
   enable_dns_support               = true
   instance_tenancy                 = "default"
   tags = {
-    "Name"     = "eks-cicd"
+    "Name" = format("%s-eks-cicd", data.aws_ssm_parameter.environment.value )
     "workshop" = "eks-cicd"
   }
 }
