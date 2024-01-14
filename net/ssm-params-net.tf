@@ -90,25 +90,25 @@ resource "aws_ssm_parameter" "sub-priv3" {
 
 
 
-resource "aws_ssm_parameter" "cicd-vpc" {
-  name        = "/${var.environment}/tf-eks/cicd-vpc"
-  description = "The cicd vpc id"
-  type        = "String"
-  value = aws_vpc.vpc-cicd.id
-  tags = {
-    workshop = "tf-eks-workshop"
-  }
-}
+# resource "aws_ssm_parameter" "cicd-vpc" {
+#   name        = "/${var.environment}/tf-eks/cicd-vpc"
+#   description = "The cicd vpc id"
+#   type        = "String"
+#   value = aws_vpc.vpc-cicd.id
+#   tags = {
+#     workshop = "tf-eks-workshop"
+#   }
+# }
 
-resource "aws_ssm_parameter" "cicd-cidr" {
-  name        = "/${var.environment}/tf-eks/cicd-cidr"
-  description = "The cicd cidr block"
-  type        = "String"
-  value = aws_vpc.vpc-cicd.cidr_block
-  tags = {
-    workshop = "tf-eks-workshop"
-  }
-}
+# resource "aws_ssm_parameter" "cicd-cidr" {
+#   name        = "/${var.environment}/tf-eks/cicd-cidr"
+#   description = "The cicd cidr block"
+#   type        = "String"
+#   value = aws_vpc.vpc-cicd.cidr_block
+#   tags = {
+#     workshop = "tf-eks-workshop"
+#   }
+# }
 
 
 resource "aws_ssm_parameter" "net-cluster-sg" {
