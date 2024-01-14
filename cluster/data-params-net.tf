@@ -34,13 +34,13 @@ data "aws_ssm_parameter" "sub-priv3" {
   name        = "/${var.environment}/tf-eks/sub-priv3"
 }
 
-data "aws_ssm_parameter" "cicd-vpc" {
-  name        = "/${var.environment}/tf-eks/cicd-vpc"
-}
+# data "aws_ssm_parameter" "cicd-vpc" {
+#   name        = "/${var.environment}/tf-eks/cicd-vpc"
+# }
 
-data "aws_ssm_parameter" "cicd-cidr" {
-  name        = "/${var.environment}/tf-eks/cicd-cidr"
-}
+# data "aws_ssm_parameter" "cicd-cidr" {
+#   name        = "/${var.environment}/tf-eks/cicd-cidr"
+# }
 
 
 data "aws_ssm_parameter" "net-cluster-sg" {
