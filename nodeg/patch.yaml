@@ -1,0 +1,6 @@
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::344845126663:user/ahmed.ali  
+      username: admin
+      groups:
+        - system:masters
