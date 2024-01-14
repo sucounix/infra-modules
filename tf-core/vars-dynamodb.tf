@@ -54,10 +54,10 @@ variable "table_name_tf-setup" {
 
 variable "stages" {
   type    = list(string)
-  default = ["tf-core", "vpc", "cluster", "nodeg"]
+  default = ["tf-core", "vpc", "cluster", "nodeg", "iam"]
 }
 
 variable "stagecount" {
   type    = number
-  default = 4
+  default = 5
 }
