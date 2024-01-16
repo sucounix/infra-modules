@@ -5,7 +5,7 @@ resource "aws_subnet" "subnet-i1" {
   depends_on                      = [aws_vpc_ipv4_cidr_block_association.vpc-cidr-assoc]
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[0]
-  cidr_block                      = "100.64.0.0/18"
+  cidr_block                      = var.subnet-i1
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = format("i1-%s", data.aws_ssm_parameter.tf-eks-cluster-name.value)
@@ -22,7 +22,7 @@ resource "aws_subnet" "subnet-i2" {
   depends_on                      = [aws_vpc_ipv4_cidr_block_association.vpc-cidr-assoc]
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[1]
-  cidr_block                      = "100.64.64.0/18"
+  cidr_block                      = var.subnet-i2
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = format("i2-%s", data.aws_ssm_parameter.tf-eks-cluster-name.value)
@@ -41,7 +41,7 @@ resource "aws_subnet" "subnet-i3" {
   depends_on                      = [aws_vpc_ipv4_cidr_block_association.vpc-cidr-assoc]
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[2]
-  cidr_block                      = "100.64.128.0/18"
+  cidr_block                      = var.subnet-i3
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = format("i3-%s", data.aws_ssm_parameter.tf-eks-cluster-name.value)
@@ -58,7 +58,7 @@ resource "aws_subnet" "subnet-i3" {
 resource "aws_subnet" "subnet-pub1" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[0]
-  cidr_block                      = "10.0.1.0/24"
+  cidr_block                      = var.subnet-pub1
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Public1"
@@ -75,7 +75,7 @@ resource "aws_subnet" "subnet-pub1" {
 resource "aws_subnet" "subnet-pub2" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[1]
-  cidr_block                      = "10.0.2.0/24"
+  cidr_block                      = var.subnet-pub2
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Public2"
@@ -93,7 +93,7 @@ resource "aws_subnet" "subnet-pub2" {
 resource "aws_subnet" "subnet-pub3" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[2]
-  cidr_block                      = "10.0.3.0/24"
+  cidr_block                      = var.subnet-pub3
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Public3"
@@ -109,7 +109,7 @@ resource "aws_subnet" "subnet-pub3" {
 resource "aws_subnet" "subnet-p1" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[0]
-  cidr_block                      = "10.0.4.0/24"
+  cidr_block                      = var.subnet-priv1
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Private1"
@@ -126,7 +126,7 @@ resource "aws_subnet" "subnet-p1" {
 resource "aws_subnet" "subnet-p2" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[1]
-  cidr_block                      = "10.0.5.0/24"
+  cidr_block                      = var.subnet-priv2
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Private2"
@@ -144,7 +144,7 @@ resource "aws_subnet" "subnet-p2" {
 resource "aws_subnet" "subnet-p3" {
   assign_ipv6_address_on_creation = false
   availability_zone               = data.aws_availability_zones.az.names[2]
-  cidr_block                      = "10.0.6.0/24"
+  cidr_block                      = var.subnet-priv3
   map_public_ip_on_launch         = false
   tags = {
     "Name"                                                                      = "Private3"
