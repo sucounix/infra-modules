@@ -73,32 +73,77 @@ variable "subnet-priv3" {
 }
 
 
-# VPC Allocation:
-# Dev VPC: 10.0.0.0/16
-# Staging VPC: 10.1.0.0/16
-# Prod VPC: 10.2.0.0/16
-# Subnet Allocation:
-# Dev VPC:
+variable "subnet-db1" {
+  type        = string
+  description = "(optional) describe your variable"
+  default     = "10.0.48.0/21"
+}
 
-# Subnet 1: 10.0.0.0/17 (Addresses: 10.0.0.1 - 10.0.127.254)
-# Subnet 2: 10.0.128.0/17 (Addresses: 10.0.128.1 - 10.0.255.254)
-# Subnet 3: 10.0.256.0/17 (Addresses: 10.0.256.1 - 10.0.383.254)
-# Subnet 4: 10.0.384.0/17 (Addresses: 10.0.384.1 - 10.0.511.254)
-# Subnet 5: 10.0.512.0/17 (Addresses: 10.0.512.1 - 10.0.639.254)
-# Subnet 6: 10.0.640.0/17 (Addresses: 10.0.640.1 - 10.0.767.254)
-# Staging VPC:
+variable "subnet-db2" {
+  type        = string
+  description = "(optional) describe your variable"
+  default     = "10.0.56.0/21"
+}
 
-# Subnet 1: 10.1.0.0/17 (Addresses: 10.1.0.1 - 10.1.127.254)
-# Subnet 2: 10.1.128.0/17 (Addresses: 10.1.128.1 - 10.1.255.254)
-# Subnet 3: 10.1.256.0/17 (Addresses: 10.1.256.1 - 10.1.383.254)
-# Subnet 4: 10.1.384.0/17 (Addresses: 10.1.384.1 - 10.1.511.254)
-# Subnet 5: 10.1.512.0/17 (Addresses: 10.1.512.1 - 10.1.639.254)
-# Subnet 6: 10.1.640.0/17 (Addresses: 10.1.640.1 - 10.1.767.254)
-# Prod VPC:
+variable "subnet-db3" {
+  type        = string
+  description = "(optional) describe your variable"
+  default     = "10.0.64.0/21"
+}
 
-# Subnet 1: 10.2.0.0/17 (Addresses: 10.2.0.1 - 10.2.127.254)
-# Subnet 2: 10.2.128.0/17 (Addresses: 10.2.128.1 - 10.2.255.254)
-# Subnet 3: 10.2.256.0/17 (Addresses: 10.2.256.1 - 10.2.383.254)
-# Subnet 4: 10.2.384.0/17 (Addresses: 10.2.384.1 - 10.2.511.254)
-# Subnet 5: 10.2.512.0/17 (Addresses: 10.2.512.1 - 10.2.639.254)
-# Subnet 6: 10.2.640.0/17 (Addresses: 10.2.640.1 - 10.2.767.254)
+# [
+#   {
+#     "subnet": 1,
+#     "networkAddress": "10.0.0.0/21",
+#     "usableIPRange": "10.0.0.1 - 10.0.7.254",
+#     "broadcastAddress": "10.0.7.255"
+#   },
+#   {
+#     "subnet": 2,
+#     "networkAddress": "10.0.8.0/21",
+#     "usableIPRange": "10.0.8.1 - 10.0.15.254",
+#     "broadcastAddress": "10.0.15.255"
+#   },
+#   {
+#     "subnet": 3,
+#     "networkAddress": "10.0.16.0/21",
+#     "usableIPRange": "10.0.16.1 - 10.0.23.254",
+#     "broadcastAddress": "10.0.23.255"
+#   },
+#   {
+#     "subnet": 4,
+#     "networkAddress": "10.0.24.0/21",
+#     "usableIPRange": "10.0.24.1 - 10.0.31.254",
+#     "broadcastAddress": "10.0.31.255"
+#   },
+#   {
+#     "subnet": 5,
+#     "networkAddress": "10.0.32.0/21",
+#     "usableIPRange": "10.0.32.1 - 10.0.39.254",
+#     "broadcastAddress": "10.0.39.255"
+#   },
+#   {
+#     "subnet": 6,
+#     "networkAddress": "10.0.40.0/21",
+#     "usableIPRange": "10.0.40.1 - 10.0.47.254",
+#     "broadcastAddress": "10.0.47.255"
+#   },
+#   {
+#     "subnet": 7,
+#     "networkAddress": "10.0.48.0/21",
+#     "usableIPRange": "10.0.48.1 - 10.0.55.254",
+#     "broadcastAddress": "10.0.55.255"
+#   },
+#   {
+#     "subnet": 8,
+#     "networkAddress": "10.0.56.0/21",
+#     "usableIPRange": "10.0.56.1 - 10.0.63.254",
+#     "broadcastAddress": "10.0.63.255"
+#   },
+#   {
+#     "subnet": 9,
+#     "networkAddress": "10.0.64.0/21",
+#     "usableIPRange": "10.0.64.1 - 10.0.71.254",
+#     "broadcastAddress": "10.0.71.255"
+#   }
+# ]

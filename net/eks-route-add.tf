@@ -1,26 +1,26 @@
-resource "aws_route" "rt-eks1" {
-  route_table_id            = aws_route_table.rtb-p1.id
-  destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
-}
+# resource "aws_route" "rt-eks1" {
+#   route_table_id            = aws_route_table.rtb-p1.id
+#   destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
+#   vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
+# }
 
-resource "aws_route" "rt-eks2" {
-  route_table_id            = aws_route_table.rtb-p2.id
-  destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
-}
+# resource "aws_route" "rt-eks2" {
+#   route_table_id            = aws_route_table.rtb-p2.id
+#   destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
+#   vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
+# }
 
-resource "aws_route" "rt-eks3" {
-  route_table_id            = aws_route_table.rtb-p3.id
-  destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
-}
+# resource "aws_route" "rt-eks3" {
+#   route_table_id            = aws_route_table.rtb-p3.id
+#   destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
+#   vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
+# }
 
-resource "aws_route" "rt-eks-isol" {
-  route_table_id            = aws_route_table.rtb-i.id
-  destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
-}
+# resource "aws_route" "rt-eks-isol" {
+#   route_table_id            = aws_route_table.rtb-i.id
+#   destination_cidr_block    = data.aws_vpc.vpc-default.cidr_block
+#   vpc_peering_connection_id = aws_vpc_peering_connection.def-peer.id
+# }
 
 
 # resource "aws_route" "rt-eks4" {
