@@ -13,3 +13,7 @@ output "public_ip"{
 output "host_id"{
   value = aws_instance.open-vpn.id
 }
+
+output "config_file" {
+  value = "OpenVPN and URL information in the file /usr/local/openvpn_as/init.log"
+}
