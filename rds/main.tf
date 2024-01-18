@@ -5,14 +5,14 @@
 data "aws_availability_zones" "available" {}
 
 locals {
-  name   = "ex-${basename(path.cwd)}"
+  # name   = "ex-${basename(path.cwd)}"
   # region = "eu-west-1"
 
   # vpc_cidr = "10.0.0.0/16"
   # azs      = slice(data.aws_availability_zones.available.names, 0, 3)
 
   tags = {
-    Example    = local.name
+    Example    = var.db-identifier
     GithubRepo = "terraform-aws-rds-aurora"
     GithubOrg  = "terraform-aws-modules"
   }
@@ -136,12 +136,12 @@ module "kms" {
   version = "~> 2.0"
 
   deletion_window_in_days = 7
-  description             = "KMS key for ${local.name} cluster activity stream."
+  description             = "KMS key for ${var.db-identifier} cluster activity stream."
   enable_key_rotation     = true
   is_enabled              = true
   key_usage               = "ENCRYPT_DECRYPT"
 
-  aliases = [local.name]
+  aliases = [var.db-identifier]
 
   tags = local.tags
 }
