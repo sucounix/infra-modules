@@ -14,3 +14,11 @@ resource "aws_eks_addon" "coredns" {
   addon_version        = "v1.10.1-eksbuild.2"
   resolve_conflicts = "OVERWRITE"
 }
+
+resource "aws_eks_addon" "ebs-csi-driver" {
+  depends_on     = [aws_eks_node_group.ng1]
+  cluster_name  = data.aws_ssm_parameter.tf-eks-cluster-name.value
+  addon_name    = "aws-ebs-csi-driver"
+  addon_version = "v1.26.1-eksbuild.1"
+  resolve_conflicts = "OVERWRITE"
+}

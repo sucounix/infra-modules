@@ -1,5 +1,5 @@
 resource "aws_instance" "open-vpn" {
-  ami                          = ami-0a082a0b0129f8d2c
+  ami                          =  "ami-0905a3c97561e0b69"
 #  ami                          = data.aws_ami.linux2.id  
   instance_type                = var.instance_type
   subnet_id                    = data.aws_subnet.default_subnet.id

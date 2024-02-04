@@ -27,24 +27,24 @@ data "aws_ami" "linux2" {
   }
 }
 
-# data "aws_ami" "ubuntu" {
+data "aws_ami" "ubuntu" {
 
-#   most_recent = true
+  most_recent = true
 
-#   filter {
-#     name   = "name"
-#     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-*"] 
-#   }
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-*"] 
+  }
 
-#   filter {
-#     name   = "virtualization-type"
-#     values = ["hvm"]
-#   }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 
-#   filter {
-#   name   = "architecture"
-#   values = ["x86_64"]
-#   }
+  filter {
+  name   = "architecture"
+  values = ["x86_64"]
+  }
 
-#   owners = ["099720109477"]
-# }
+  owners = ["099720109477"]
+}

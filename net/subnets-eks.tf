@@ -116,6 +116,7 @@ resource "aws_subnet" "subnet-p1" {
     "kubernetes.io/cluster/${data.aws_ssm_parameter.tf-eks-cluster-name.value}" = "shared"
     "kubernetes.io/role/internal-elb"                                           = "1"
     "workshop"                                                                  = "subnet-p1"
+    "karpenter.sh/discovery"                                                    = data.aws_ssm_parameter.tf-eks-cluster-name.value
   }
   vpc_id = aws_vpc.cluster.id
 
@@ -133,6 +134,7 @@ resource "aws_subnet" "subnet-p2" {
     "kubernetes.io/cluster/${data.aws_ssm_parameter.tf-eks-cluster-name.value}" = "shared"
     "kubernetes.io/role/internal-elb"                                           = "1"
     "workshop"                                                                  = "subnet-p2"
+    "karpenter.sh/discovery"                                                    = data.aws_ssm_parameter.tf-eks-cluster-name.value
   }
   vpc_id = aws_vpc.cluster.id
 
@@ -151,6 +153,7 @@ resource "aws_subnet" "subnet-p3" {
     "kubernetes.io/cluster/${data.aws_ssm_parameter.tf-eks-cluster-name.value}" = "shared"
     "kubernetes.io/role/internal-elb"                                           = "1"
     "workshop"                                                                  = "subnet-p3"
+    "karpenter.sh/discovery"                                                    = data.aws_ssm_parameter.tf-eks-cluster-name.value
   }
   vpc_id = aws_vpc.cluster.id
 

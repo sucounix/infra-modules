@@ -1,6 +1,6 @@
 resource "aws_launch_template" "lt-ng1" {
   # depends_on             = [null_resource.annotate]
-  instance_type          = "t3.small"
+  instance_type          = "t3.medium"
   key_name               = data.aws_ssm_parameter.key_name.value
   name                   = format("at-lt-%s-ng1", data.aws_eks_cluster.eks_cluster.name)
   tags                   = {}
@@ -16,16 +16,17 @@ resource "aws_launch_template" "lt-ng1" {
   lifecycle {
     create_before_destroy = true
   }
+# }
+
+
+block_device_mappings {
+  device_name = "/dev/sda1"
+
+   ebs {
+     volume_size = 32
+   }
+ }
 }
-
-
-# block_device_mappings {
-#   device_name = "/dev/sda1"
-#
-#    ebs {
-#      volume_size = 32
-#    }
-#  }
 
 
 ## Enable this when you use cluster autoscaler within cluster.

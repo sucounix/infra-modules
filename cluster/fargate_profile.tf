@@ -17,9 +17,9 @@ resource "aws_eks_fargate_profile" "fargate-profile" {
     namespace = "fargate*"
   }
 
-   selector {
-    namespace = "karpenter"
-  } 
+  #  selector {
+  #   namespace = "karpenter"
+  # } 
 
   timeouts {}
 }

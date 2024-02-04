@@ -11,7 +11,9 @@ resource "aws_eks_cluster" "cluster" {
   name = data.aws_ssm_parameter.tf-eks-cluster-name.value
 
   role_arn = data.aws_ssm_parameter.cluster_service_role_arn.value
-  tags     = {}
+  tags     = {
+    "karpenter.sh/discovery"                                                    = data.aws_ssm_parameter.tf-eks-cluster-name.value
+ }
   version  = var.eks_version
 
   timeouts {}
