@@ -7,45 +7,45 @@ provider "aws" {
   alias  = "virginia"
 }
 
-provider "kubernetes" {
-  host                   = data.aws_eks_cluster.eks_cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
+# provider "kubernetes" {
+#   host                   = data.aws_eks_cluster.eks_cluster.endpoint
+#   cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
 
-  exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
-    command     = "aws"
-    # This requires the awscli to be installed locally where Terraform is executed
-    args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
-  }
-}
+#   exec {
+#     api_version = "client.authentication.k8s.io/v1beta1"
+#     command     = "aws"
+#     # This requires the awscli to be installed locally where Terraform is executed
+#     args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
+#   }
+# }
 
-provider "helm" {
-  kubernetes {
-    host                   = data.aws_eks_cluster.eks_cluster.endpoint
-    cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
+# provider "helm" {
+#   kubernetes {
+#     host                   = data.aws_eks_cluster.eks_cluster.endpoint
+#     cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
 
-    exec {
-      api_version = "client.authentication.k8s.io/v1beta1"
-      command     = "aws"
-      # This requires the awscli to be installed locally where Terraform is executed
-      args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
-    }
-  }
-}
+#     exec {
+#       api_version = "client.authentication.k8s.io/v1beta1"
+#       command     = "aws"
+#       # This requires the awscli to be installed locally where Terraform is executed
+#       args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
+#     }
+#   }
+# }
 
-provider "kubectl" {
-  apply_retry_count      = 5
-  host                   = data.aws_eks_cluster.eks_cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
-  load_config_file       = false
+# provider "kubectl" {
+#   apply_retry_count      = 5
+#   host                   = data.aws_eks_cluster.eks_cluster.endpoint
+#   cluster_ca_certificate = base64decode(data.aws_ssm_parameter.ca.value)
+#   load_config_file       = false
 
-  exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
-    command     = "aws"
-    # This requires the awscli to be installed locally where Terraform is executed
-    args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
-  }
-}
+#   exec {
+#     api_version = "client.authentication.k8s.io/v1beta1"
+#     command     = "aws"
+#     # This requires the awscli to be installed locally where Terraform is executed
+#     args = ["eks", "get-token", "--cluster-name", data.aws_eks_cluster.eks_cluster.name]
+#   }
+# }
 
 data "aws_availability_zones" "available" {}
 data "aws_ecrpublic_authorization_token" "token" {
@@ -73,7 +73,7 @@ locals {
 ################################################################################
 
 module "karpenter" {
-  source = "./modules/modules/karpenter"
+  source = "./03-karpenter/modules/karpenter"
 
   cluster_name           = data.aws_eks_cluster.eks_cluster.name
   irsa_oidc_provider_arn = data.aws_ssm_parameter.oidc_provider_arn.value
